@@ -18,7 +18,7 @@ let s:start_pattern = s:comment_escape . s:block_openers
 let s:end_pattern = s:comment_escape . '\zs<end>'
 
 function! s:select_a()
-  call searchpair(s:start_pattern,'',s:end_pattern, 'cW')
+  call searchpair(s:start_pattern,'',s:end_pattern, 'W')
   let end_pos = getpos('.')
 
   normal %
@@ -28,7 +28,7 @@ function! s:select_a()
 endfunction
 
 function! s:select_i()
-  call searchpair(s:start_pattern,'',s:end_pattern, 'cW')
+  call searchpair(s:start_pattern,'',s:end_pattern, 'W')
   let end_pos = getpos('.')
   let end_pos[1] = end_pos[1] - 1
 
