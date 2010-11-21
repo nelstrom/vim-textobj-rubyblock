@@ -1,0 +1,88 @@
+*textobj-rubyblock.txt*	Text objects for ruby blocks
+
+Version 0.0.1
+
+CONTENTS					*textobj-rubyblock-contents*
+
+Introduction		|textobj-rubyblock-introduction|
+Interface		|textobj-rubyblock-interface|
+Commands		  |textobj-rubyblock-commands|
+Functions		  |textobj-rubyblock-functions|
+Mappings		  |textobj-rubyblock-mappings|
+Examples		|textobj-rubyblock-examples|
+Bugs			|textobj-rubyblock-bugs|
+Changelog		|textobj-rubyblock-changelog|
+
+
+==============================================================================
+INTRODUCTION					*textobj-rubyblock-introduction*
+
+*textobj-rubyblock* is a Vim plugin that adds text objects for selecting
+blocks of ruby. These may open with any of the keywords 'if', 'do', 'def', 'class' or
+'module', but they always close with the keyword 'end'.
+
+
+Requirements:
+- Vim 7.2 or later
+- |textobj-user| 0.3.7 or later (vimscript#2100)
+
+Latest version:
+http://github.com/kana/config/commits/vim-textobj-rubyblock
+
+
+==============================================================================
+INTERFACE					*textobj-rubyblock-interface*
+
+------------------------------------------------------------------------------
+MAPPINGS					*textobj-rubyblock-mappings*
+
+These key mappings are defined in Visual mode and Operator-pending mode.
+
+<Plug>(textobj-rubyblock-a)			*<Plug>(textobj-rubyblock-a)*
+	Select the ruby block including the opening and closing lines.
+
+<Plug>(textobj-rubyblock-i)			*<Plug>(textobj-rubyblock-i)*
+	Select the inner lines of a ruby block. The opening and closing
+	lines are not included.
+
+
+
+
+==============================================================================
+CUSTOMIZING					*textobj-rubyblock-customizing*
+
+				*g:textobj_rubyblock_no_default_key_mappings*
+					*:TextobjRubyblockDefaultKeyMappings*
+
+        This plugin will define the following key mappings in Visual mode and
+        Operator-pending mode automatically.  If you don't want these key
+        mappings, define |g:textobj_rubyblock_no_default_key_mappings| before
+        this plugin is loaded (e.g. in your |vimrc|).  You can also use
+        |:TextobjRubyblockDefaultKeyMappings| to redefine these key mappings.
+        This command doesn't override existing {lhs}s unless [!] is given.
+
+	{lhs}	{rhs}			~
+	-----	----------------------	~
+	ae	<Plug>(textobj-rubyblock-a)
+	ie	<Plug>(textobj-rubyblock-i)
+
+
+
+
+==============================================================================
+BUGS						*textobj-rubyblock-bugs*
+
+- [count] is just ignored.
+
+- See |textobj-user-bugs| for further information.
+
+
+==============================================================================
+CHANGELOG					*textobj-rubyblock-changelog*
+
+0.0.1	2010-11-21
+	- First release.
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:fen:fdl=0:fdm=marker:
+
