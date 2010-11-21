@@ -28,10 +28,15 @@ function! s:select_a()
 endfunction
 
 function! s:select_i()
-  call searchpair(s:start_pattern,'',s:end_pattern, 'W')
+  let s:flags = 'W'
+  if expand('<cword>') == 'end'
+    let s:flags = 'cW'
+  endif
+  call searchpair(s:start_pattern,'',s:end_pattern, s:flags)
+  normal k^
   let end_pos = getpos('.')
-  let end_pos[1] = end_pos[1] - 1
 
+  normal j^
   normal %
   let start_pos = getpos('.')
   let start_pos[1] = start_pos[1] + 1
