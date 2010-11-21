@@ -6,8 +6,6 @@ CONTENTS					*textobj-rubyblock-contents*
 
 Introduction		|textobj-rubyblock-introduction|
 Interface		|textobj-rubyblock-interface|
-Commands		  |textobj-rubyblock-commands|
-Functions		  |textobj-rubyblock-functions|
 Mappings		  |textobj-rubyblock-mappings|
 Examples		|textobj-rubyblock-examples|
 Bugs			|textobj-rubyblock-bugs|
