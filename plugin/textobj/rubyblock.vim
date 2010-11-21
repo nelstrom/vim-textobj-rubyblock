@@ -18,7 +18,9 @@ let s:start_pattern = s:comment_escape . s:block_openers
 let s:end_pattern = s:comment_escape . '\zs<end>'
 
 function! s:select_a()
-  call searchpair(s:start_pattern,'',s:end_pattern, 'W')
+  let s:flags = 'W'
+
+  call searchpair(s:start_pattern,'',s:end_pattern, s:flags)
   let end_pos = getpos('.')
 
   " Jump to match
