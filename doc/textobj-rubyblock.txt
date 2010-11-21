@@ -18,8 +18,8 @@ Changelog		|textobj-rubyblock-changelog|
 INTRODUCTION					*textobj-rubyblock-introduction*
 
 *textobj-rubyblock* is a Vim plugin that adds text objects for selecting
-blocks of ruby. These may open with any of the keywords 'if', 'do', 'def', 'class' or
-'module', but they always close with the keyword 'end'.
+blocks of ruby. These may open with any of the keywords 'if', 'do', 'def',
+'class' or 'module', but they always close with the keyword 'end'.
 
 
 Requirements:
