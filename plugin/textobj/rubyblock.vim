@@ -21,6 +21,7 @@ function! s:select_a()
   call searchpair(s:start_pattern,'',s:end_pattern, 'W')
   let end_pos = getpos('.')
 
+  " Jump to match
   normal %
   let start_pos = getpos('.')
 
@@ -32,14 +33,16 @@ function! s:select_i()
   if expand('<cword>') == 'end'
     let s:flags = 'cW'
   endif
+
   call searchpair(s:start_pattern,'',s:end_pattern, s:flags)
+
+  " Move up one line, and save position
   normal k^
   let end_pos = getpos('.')
 
-  normal j^
-  normal %
+  " Move down again, jump to match, then down one line and save position
+  normal j^%j
   let start_pos = getpos('.')
-  let start_pos[1] = start_pos[1] + 1
 
   return ['V', start_pos, end_pos]
 endfunction
