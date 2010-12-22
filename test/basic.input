@@ -1,4 +1,4 @@
-" vim: filetype=vim foldmethod=marker
+" vim: filetype=vim
 runtime! plugin/textobj/*.vim
 
 function s:describe__global_variables()
@@ -6,3 +6,34 @@ function s:describe__global_variables()
 
   Should exists('g:loaded_textobj_rubyblock') be true
 endfunction
+
+function s:describe__named_key_mappings()
+  It "Check the existence of the named key mappings in each mode"
+
+  for _ in ['<Plug>(textobj-rubyblock-a)',
+  \         '<Plug>(textobj-rubyblock-i)']
+    execute "Should maparg(".string(_).", 'c') == ''"
+    execute "Should maparg(".string(_).", 'i') == ''"
+    execute "Should maparg(".string(_).", 'n') == ''"
+    execute "Should maparg(".string(_).", 'o') != ''"
+    execute "Should maparg(".string(_).", 'v') != ''"
+  endfor
+endfunction
+
+
+function s:describe__default_key_mappings()
+  It "Check the definitions of the default key mappings in each mode"
+
+  Should maparg('ae', 'c') ==# ''
+  Should maparg('ae', 'i') ==# ''
+  Should maparg('ae', 'n') ==# ''
+  Should maparg('ae', 'o') ==# '<Plug>(textobj-rubyblock-a)'
+  Should maparg('ae', 'v') ==# '<Plug>(textobj-rubyblock-a)'
+  Should maparg('ie', 'c') ==# ''
+  Should maparg('ie', 'i') ==# ''
+  Should maparg('ie', 'n') ==# ''
+  Should maparg('ie', 'o') ==# '<Plug>(textobj-rubyblock-i)'
+  Should maparg('ie', 'v') ==# '<Plug>(textobj-rubyblock-i)'
+endfunction
+
+
