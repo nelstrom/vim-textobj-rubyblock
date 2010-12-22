@@ -30,3 +30,4 @@ So to run the `basic.input` tests, you would run:
 
 [u]: https://github.com/kana/vim-textobj-user
 [vspec]: https://github.com/kana/vim-vspec
+[pathogen]: http://www.vim.org/scripts/script.php?script_id=2332
