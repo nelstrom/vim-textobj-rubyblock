@@ -1,0 +1,8 @@
+" vim: filetype=vim foldmethod=marker
+runtime! plugin/textobj/*.vim
+
+function s:describe__global_variables()
+  It "Check global variables"
+
+  Should exists('g:loaded_textobj_rubyblock') be true
+endfunction
