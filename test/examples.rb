@@ -1,4 +1,8 @@
 class Foo
+  include Bar
+end
+
+class Foo
   # words containing 'end' to be ignored
   roadend
   endofline
