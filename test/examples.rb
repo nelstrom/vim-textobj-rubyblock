@@ -4,8 +4,9 @@ end
 
 class Foo
   # words containing 'end' to be ignored
-  roadend
-  endofline
+  include Bendy
+  include Girlfriend
+  include Endothermic
 end
 
 class Foo
