@@ -36,25 +36,25 @@ function s:describe__default_key_mappings()
   Should maparg('ie', 'v') ==# '<Plug>(textobj-rubyblock-i)'
 endfunction
 
-"function s:describe__select_a() {{{1
-  "It "<Plug>(textobj-rubyblock-a)"
+function s:describe__select_a()
+  It "<Plug>(textobj-rubyblock-a)"
 
-  "tabnew
-  "tabonly!
+  tabnew
+  tabonly!
 
-  "silent put =[
-  "\   'class Foo',
-  "\   '  include Bar',
-  "\   'end',
-  "\ ]
-  "1 delete _
-  "normal! 2G
+  silent put =[
+  \   'class Foo',
+  \   '  include Bar',
+  \   'end',
+  \ ]
+  1 delete _
+  normal! 2G
 
-  "execute "normal v\<Plug>(textobj-rubyblock-a)\<Esc>"
-  "Should [line("'<"), col("'<")] ==# [1, 1]
-  "Should [line("'>"), col("'>")] ==# [3, 4]
+  execute "normal v\<Plug>(textobj-rubyblock-a)\<Esc>"
+  Should [line("'<"), col("'<")] ==# [1, 1]
+  Should [line("'>"), col("'>")] ==# [3, 4]
 
-"endfunction }}}
+endfunction }}}
 
 function s:describe__select_i()
   It "<Plug>(textobj-rubyblock-i)"
