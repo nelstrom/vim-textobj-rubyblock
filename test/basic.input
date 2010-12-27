@@ -24,16 +24,16 @@ endfunction
 function s:describe__default_key_mappings()
   It "Check the definitions of the default key mappings in each mode"
 
-  Should maparg('ae', 'c') ==# ''
-  Should maparg('ae', 'i') ==# ''
-  Should maparg('ae', 'n') ==# ''
-  Should maparg('ae', 'o') ==# '<Plug>(textobj-rubyblock-a)'
-  Should maparg('ae', 'v') ==# '<Plug>(textobj-rubyblock-a)'
-  Should maparg('ie', 'c') ==# ''
-  Should maparg('ie', 'i') ==# ''
-  Should maparg('ie', 'n') ==# ''
-  Should maparg('ie', 'o') ==# '<Plug>(textobj-rubyblock-i)'
-  Should maparg('ie', 'v') ==# '<Plug>(textobj-rubyblock-i)'
+  Should maparg('ar', 'c') ==# ''
+  Should maparg('ar', 'i') ==# ''
+  Should maparg('ar', 'n') ==# ''
+  Should maparg('ar', 'o') ==# '<Plug>(textobj-rubyblock-a)'
+  Should maparg('ar', 'v') ==# '<Plug>(textobj-rubyblock-a)'
+  Should maparg('ir', 'c') ==# ''
+  Should maparg('ir', 'i') ==# ''
+  Should maparg('ir', 'n') ==# ''
+  Should maparg('ir', 'o') ==# '<Plug>(textobj-rubyblock-i)'
+  Should maparg('ir', 'v') ==# '<Plug>(textobj-rubyblock-i)'
 endfunction
 
 function s:describe__select_a()

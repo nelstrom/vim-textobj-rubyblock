@@ -6,8 +6,8 @@ endif
 call textobj#user#plugin('rubyblock', {
 \      '-': {
 \        '*sfile*': expand('<sfile>:p'),
-\        'select-a': 'ae',  '*select-a-function*': 's:select_a',
-\        'select-i': 'ie',  '*select-i-function*': 's:select_i'
+\        'select-a': 'ar',  '*select-a-function*': 's:select_a',
+\        'select-i': 'ir',  '*select-i-function*': 's:select_i'
 \      }
 \    })
 
