@@ -5,10 +5,10 @@ text objects.
 
 # Usage #
 
-When textobj-ruby is installed you will gain two new text objects, which are
-triggered by `ar` and `ir` respectively. These follow Vim convention, so that
-`ar` selects _all_ of a ruby block, and `ir` selects the _inner_ portion of a
-rubyblock.
+When textobj-rubyblock is installed you will gain two new text objects, which
+are triggered by `ar` and `ir` respectively. These follow Vim convention, so
+that `ar` selects _all_ of a ruby block, and `ir` selects the _inner_ portion
+of a rubyblock.
 
 In ruby, a block is always closed with the `end` keyword. Ruby blocks may be
 opened using one of several keywords, including `module`, `class`, `def` `if`
@@ -68,3 +68,5 @@ selection inwards by repeating `ir`.
 
 First of all, ensure that you have installed vimscript #2100, without which
 this plugin will not work.
+
+
