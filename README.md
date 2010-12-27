@@ -26,8 +26,19 @@ So to run the `basic.input` tests, you would run:
     cd ~/dotfiles/vim/textobj-rubyblock
     ../vspec/bin/vspec test/basic.input ../vspec/ ../textobj-user/ .
 
+Generating a vimball
+--------------------
 
+To distribute the script on [vim.org][s] wrap it up as a vimball by following these steps:
+
+* open the file `vimballer` in Vim
+* set the variable `g:vimball_home` to the development directory of this plugin (e.g. run: `:let g:vimball_home='~/dotfiles/vim/bundle/textobj-rubyblock'`)
+* visually select all lines in `vimballer` file
+* run `'<,'>MkVimball! textobj-rubyblock.vba`
+
+That should create a file called `textobj-rubyblock.vba` which you can upload to [vim.org][s].
 
 [u]: https://github.com/kana/vim-textobj-user
 [vspec]: https://github.com/kana/vim-vspec
 [pathogen]: http://www.vim.org/scripts/script.php?script_id=2332
+[s]: http://www.vim.org/scripts/index.php
