@@ -82,13 +82,14 @@ Assuming you use [pathogen][] to manage your plugins, then the plugins required 
 
     ~/dotfiles
               /vim
-                  /textobj-user
-                  /textobj-rubyblock
-                  /vspec
+                  /bundle
+                         /textobj-user
+                         /textobj-rubyblock
+                         /vspec
 
 So to run the `basic.input` tests, you would run:
 
-    cd ~/dotfiles/vim/textobj-rubyblock
+    cd ~/dotfiles/vim/bundle/textobj-rubyblock
     ../vspec/bin/vspec test/basic.input ../vspec/ ../textobj-user/ .
 
 Generating a vimball
