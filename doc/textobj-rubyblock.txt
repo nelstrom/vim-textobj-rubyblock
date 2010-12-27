@@ -61,8 +61,8 @@ CUSTOMIZING					*textobj-rubyblock-customizing*
 
 	{lhs}	{rhs}			~
 	-----	----------------------	~
-	ae	<Plug>(textobj-rubyblock-a)
-	ie	<Plug>(textobj-rubyblock-i)
+	ar	<Plug>(textobj-rubyblock-a)
+	ir	<Plug>(textobj-rubyblock-i)
 
 
 
