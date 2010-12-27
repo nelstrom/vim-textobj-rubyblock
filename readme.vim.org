@@ -71,6 +71,11 @@ selection inwards by repeating `ir`.
 First of all, ensure that you have installed vimscript #2100, without which
 this plugin will not work.
 
+Then, ensure that you have enabled the matchit.vim vimscript #39 plugin. This
+can be achieved by running (or placing this in your vimrc file):
+
+    :runtime macros/matchit.vim
+
 This plugin is distributed as a vimball, so to install it you just need to
 open the file with Vim and run the command:
 
