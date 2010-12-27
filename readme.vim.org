@@ -3,6 +3,8 @@ A custom text object for selecting ruby blocks.
 Depends on vimscript #2100, which provides a framework for creating custom
 text objects.
 
+Also requires that matchit.vim vimscript #39 is enabled.
+
 # Usage #
 
 When textobj-rubyblock is installed you will gain two new text objects, which

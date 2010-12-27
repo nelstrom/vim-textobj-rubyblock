@@ -5,6 +5,10 @@ A custom text object for selecting ruby blocks.
 
 Depends on Kana's [textobj-user plugin][u]. Test suite requires [vspec][] (also by Kana).
 
+Also requires that the matchit.vim plugin is enabled. Ensure that the following line is included somewhere in your vimrc file:
+
+    runtime macros/matchit.vim
+
 Usage
 =====
 
