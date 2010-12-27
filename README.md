@@ -1,5 +1,8 @@
 A custom text object for selecting ruby blocks.
 
+<a href="http://flattr.com/thing/107222/vim-textobj-rubyblock-A-custom-text-object-for-selecting-ruby-blocks" target="_blank">
+<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
+
 Depends on Kana's [textobj-user plugin][u]. Test suite requires [vspec][] (also by Kana).
 
 Usage
