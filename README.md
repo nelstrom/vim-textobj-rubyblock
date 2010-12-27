@@ -111,3 +111,13 @@ That should create a file called `textobj-rubyblock.vba` which you can upload to
 [vspec]: https://github.com/kana/vim-vspec
 [pathogen]: http://www.vim.org/scripts/script.php?script_id=2332
 [s]: http://www.vim.org/scripts/index.php
+
+Credits
+=======
+
+This plugin was built by [Drew Neil][me], but the real credit goes to [Kana][], whose [textobj-user][kana-git] plugin provides a framework for building custom text objects. I couldn't have created the rubyblock plugin without building on top of his hard work, so I'd like to say a big thanks to Kana.
+
+[Kana]: http://whileimautomaton.net/
+[textobj-user]: http://www.vim.org/scripts/script.php?script_id=2100
+[kana-git]: https://github.com/kana/vim-textobj-user
+[me]: http://drewneil.com
