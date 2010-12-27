@@ -28,6 +28,9 @@ class Foo
     # For each *keyword*, add to stack
     # for each 'end', remove *keyword* from stack
     # if an 'end' is found when stack is empty, jump to match '%'
+  else
+    # selecting 'all' of an if/else construct means from the opening
+    # 'if' to the closing 'end'.
   end
 end
 
