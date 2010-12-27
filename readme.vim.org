@@ -69,4 +69,13 @@ selection inwards by repeating `ir`.
 First of all, ensure that you have installed vimscript #2100, without which
 this plugin will not work.
 
+This plugin is distributed as a vimball, so to install it you just need to
+open the file with Vim and run the command:
 
+    :source %
+
+If you prefer to manage your plugins using pathogen (vimscript #2332), then
+you might prefer to checkout the latest version directly from github:
+
+* https://github.com/nelstrom/vim-textobj-rubyblock
+* https://github.com/kana/vim-textobj-user

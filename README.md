@@ -1,8 +1,73 @@
 A custom text object for selecting ruby blocks.
 
-Depends on Kana's [textobj-user plugin][u].
+Depends on Kana's [textobj-user plugin][u]. Test suite requires [vspec][] (also by Kana).
 
-Test suite requires [vspec][] (also by Kana).
+Usage
+=====
+
+When textobj-rubyblock is installed you will gain two new text objects, which
+are triggered by `ar` and `ir` respectively. These follow Vim convention, so
+that `ar` selects _all_ of a ruby block, and `ir` selects the _inner_ portion
+of a rubyblock.
+
+In ruby, a block is always closed with the `end` keyword. Ruby blocks may be
+opened using one of several keywords, including `module`, `class`, `def` `if`
+and `do`. This example demonstrates a few of these:
+
+    module Foo
+      class Bar
+        def Baz
+          [1,2,3].each do |i|
+            i + 1
+          end
+        end
+      end
+    end
+
+Suppose your cursor was positioned on the word `def`. Typing `var` would
+enable visual mode selecting _all_ of the method definition. Your selection
+would comprise the following lines:
+
+    def Baz
+      [1,2,3].each do |i|
+        i + 1
+      end
+    end
+
+Whereas if you typed `vir`, you would select everything _inside_ of the method
+definition, which looks like this:
+
+    [1,2,3].each do |i|
+      i + 1
+    end
+
+Note that the `ar` and `ir` text objects always enable _visual line_ mode,
+even if you were in visual character or block mode before you triggered the
+rubyblock text object.
+
+Note too that the `ar` and `ir` text objects always position your cursor on
+the `end` keyword. If you want to move to the top of the selection, you can do
+so with the `o` key.
+
+Limitations
+-----------
+
+Some text objects in Vim respond to a count. For example, the `a{` text object
+will select _all_ of the current `{}` delimited block, but if you prefix it
+with the number 2 (e.g. `v2i{`) then it will select all of the block that
+contains the current block. The rubyblock text object does not respond in this
+way if you prefix a count. This is due to a limitation in the [textobj-user
+plugin][u].
+
+However, you can achieve a similar effect by repeating the rubyblock
+text-object manually. So if you press `var` to select the current ruby block,
+you can expand your selection outwards by repeating `ar`, or contract your
+selection inwards by repeating `ir`.
+
+Development
+===========
+
+Specs are currently broken. :-/
 
 Running the specs
 -----------------
