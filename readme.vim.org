@@ -1,0 +1,4 @@
+A custom text object for selecting ruby blocks.
+
+Depends on vimscript #2100, which provides a framework for creating custom text
+objects.

@@ -5,4 +5,5 @@
 		or
 		[_] do not require this behaviour
 [_] issues
-	[_] inner/all behaviour differs if you are on 'd' or 'o' of 'do'
+	[_] inner/all behaviour differs if you are on 'e' or 'n/d' of 'end'
+	[X] inner/all behaviour differs if you are on 'd' or 'o' of 'do'
