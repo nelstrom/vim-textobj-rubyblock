@@ -48,3 +48,16 @@ end
   # don't forget that a method can be called on 'end'!
   i + 1
 end.max
+
+def adjust_format_for_istar
+  request.format = :iphone if iphone?
+  request.format = :ipad if ipad?
+  request.format = :js if request.xhr?
+end
+
+def hello
+  foo = 3
+  world if foo == bar
+  bar
+end
+
