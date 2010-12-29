@@ -2,7 +2,7 @@
 UseVimball
 finish
 plugin/textobj/rubyblock.vim	[[[1
-57
+58
 if exists('g:loaded_textobj_rubyblock')  "{{{1
   finish
 endif
@@ -21,11 +21,12 @@ let s:comment_escape = '\v^[^#]*'
 let s:block_openers = '\zs(<def>|<if>|<do>|<module>|<class>)'
 let s:start_pattern = s:comment_escape . s:block_openers
 let s:end_pattern = s:comment_escape . '\zs<end>'
+let s:skip_pattern = 'getline(".") =~ "\\w\\s\\+if"'
 
 function! s:select_a()
   let s:flags = 'W'
 
-  call searchpair(s:start_pattern,'',s:end_pattern, s:flags)
+  call searchpair(s:start_pattern,'',s:end_pattern, s:flags, s:skip_pattern)
   let end_pos = getpos('.')
 
   " Jump to match
@@ -41,7 +42,7 @@ function! s:select_i()
     let s:flags = 'cW'
   endif
 
-  call searchpair(s:start_pattern,'',s:end_pattern, s:flags)
+  call searchpair(s:start_pattern,'',s:end_pattern, s:flags, s:skip_pattern)
 
   " Move up one line, and save position
   normal k^
@@ -61,7 +62,7 @@ let g:loaded_textobj_rubyblock = 1
 " __END__
 " vim: foldmethod=marker
 doc/textobj-rubyblock.txt	[[[1
-144
+151
 *textobj-rubyblock.txt*	Text objects for ruby blocks
 
 Version 0.0.1
@@ -141,7 +142,14 @@ selection inwards by repeating `ir`.
 
 - Vim 7.2 or later
 - |textobj-user| 0.3.7 or later (vimscript#2100)
+- |matchit.vim|
 
+Matchit.vim is distributed with Vim, but is not enabled by default. If you add
+the following line to your vimrc file, then it will enable matchit.vim each
+time Vim starts up:
+>
+    runtime macros/matchit.vim
+<
 Latest version:
 http://github.com/nelstrom/vim-textobj-rubyblock
 
