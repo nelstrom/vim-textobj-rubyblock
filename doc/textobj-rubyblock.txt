@@ -77,7 +77,14 @@ selection inwards by repeating `ir`.
 
 - Vim 7.2 or later
 - |textobj-user| 0.3.7 or later (vimscript#2100)
+- |matchit.vim|
 
+Matchit.vim is distributed with Vim, but is not enabled by default. If you add
+the following line to your vimrc file, then it will enable matchit.vim each
+time Vim starts up:
+>
+    runtime macros/matchit.vim
+<
 Latest version:
 http://github.com/nelstrom/vim-textobj-rubyblock
 
