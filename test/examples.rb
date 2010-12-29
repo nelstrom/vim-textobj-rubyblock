@@ -57,6 +57,9 @@ end
 
 def hello
   foo = 3
+  unless foo > 1
+    bar = 3
+  end
   world if foo == bar
   world unless foo == bar
   bar
