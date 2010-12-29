@@ -58,6 +58,7 @@ end
 def hello
   foo = 3
   world if foo == bar
+  world unless foo == bar
   bar
 end
 
