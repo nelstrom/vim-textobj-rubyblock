@@ -110,15 +110,19 @@ describe 'if/else blocks'
     for num in [1,2,8]
       call InvokeFromLine(num, 'i')
       Expect SelectedRange() ==# [2, 7]
+    endfor
+    for num in [1,2,7,8]
       call InvokeFromLine(num, 'a')
       Expect SelectedRange() ==# [1, 8]
     endfor
   end
 
   it 'selects nested if/else block'
-    for num in [3,4,5,6]
+    for num in [3,4,5,6,7]
       call InvokeFromLine(num, 'i')
       Expect SelectedRange() ==# [4, 6]
+    endfor
+    for num in [3,4,5,6]
       call InvokeFromLine(num, 'a')
       Expect SelectedRange() ==# [3, 7]
     endfor
