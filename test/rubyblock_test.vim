@@ -2,6 +2,7 @@
 silent filetype indent plugin on
 runtime! macros/matchit.vim
 runtime! plugin/textobj/*.vim
+set visualbell
 
 describe 'rubyblock'
 
@@ -44,6 +45,10 @@ describe '<Plug>(textobj-rubyblock-i)'
     silent tabnew test/samples/class.rb
   end
 
+  after
+    silent tabclose
+  end
+
   it 'selects inside of a class'
     execute "normal v\<Plug>(textobj-rubyblock-i)\<Esc>"
     Expect [line("'<"), col("'<")] ==# [2, 1]
@@ -57,10 +62,33 @@ describe '<Plug>(textobj-rubyblock-a)'
     silent tabnew test/samples/class.rb
   end
 
-  it 'selects inside of a class'
+  after
+    silent tabclose
+  end
+
+  it 'selects all of a class'
     execute "normal v\<Plug>(textobj-rubyblock-a)\<Esc>"
     Expect [line("'<"), col("'<")] ==# [1, 1]
     Expect [line("'>"), col("'>")] ==# [3, 4]
   end
 
 end
+
+describe '<Plug>(textobj-rubyblock-i)'
+  before
+    silent tabnew test/samples/commented-end.rb
+  end
+
+  after
+    silent tabclose
+  end
+
+  it 'ignores "end" keyword inside of a comment'
+    execute "normal v\<Plug>(textobj-rubyblock-i)\<Esc>"
+    TODO
+    Expect [line("'<"), col("'<")] ==# [2, 1]
+    Expect [line("'>"), col("'>")] ==# [2, 35]
+  end
+
+end
+
