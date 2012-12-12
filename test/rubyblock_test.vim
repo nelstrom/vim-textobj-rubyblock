@@ -4,6 +4,15 @@ runtime! macros/matchit.vim
 runtime! plugin/textobj/*.vim
 set visualbell
 
+function! InvokeFromLine(line, type)
+  execute "normal ".a:line."G"
+  execute "normal v\<Plug>(textobj-rubyblock-".a:type.")\<Esc>"
+endfunction
+
+function! SelectedRange()
+  return [line("'<"), line("'>")]
+endfunction
+
 describe 'rubyblock'
 
   it 'should set a global variable'
@@ -15,8 +24,7 @@ end
 describe 'default'
 
   it 'should create named key maps'
-    for _ in ['<Plug>(textobj-rubyblock-a)',
-          \         '<Plug>(textobj-rubyblock-i)']
+    for _ in ['<Plug>(textobj-rubyblock-a)', '<Plug>(textobj-rubyblock-i)']
       execute "Expect maparg(".string(_).", 'c') == ''"
       execute "Expect maparg(".string(_).", 'i') == ''"
       execute "Expect maparg(".string(_).", 'n') == ''"
@@ -51,8 +59,7 @@ describe '<Plug>(textobj-rubyblock-i)'
 
   it 'selects inside of a class'
     execute "normal v\<Plug>(textobj-rubyblock-i)\<Esc>"
-    Expect [line("'<"), col("'<")] ==# [2, 1]
-    Expect [line("'>"), col("'>")] ==# [2, 14]
+    Expect SelectedRange() ==# [2, 2]
   end
 
 end
@@ -68,8 +75,7 @@ describe '<Plug>(textobj-rubyblock-a)'
 
   it 'selects all of a class'
     execute "normal v\<Plug>(textobj-rubyblock-a)\<Esc>"
-    Expect [line("'<"), col("'<")] ==# [1, 1]
-    Expect [line("'>"), col("'>")] ==# [3, 4]
+    Expect SelectedRange() ==# [1, 3]
   end
 
 end
@@ -86,8 +92,36 @@ describe '<Plug>(textobj-rubyblock-i)'
   it 'ignores "end" keyword inside of a comment'
     execute "normal v\<Plug>(textobj-rubyblock-i)\<Esc>"
     TODO
-    Expect [line("'<"), col("'<")] ==# [2, 1]
-    Expect [line("'>"), col("'>")] ==# [2, 35]
+    Expect SelectedRange() ==# [2, 2]
+  end
+
+end
+
+describe 'if/else blocks'
+  before
+    silent tabnew test/samples/if-else.rb
+  end
+
+  after
+    silent tabclose
+  end
+
+  it 'ignores nested if/else block'
+    for num in [1,2,8]
+      call InvokeFromLine(num, 'i')
+      Expect SelectedRange() ==# [2, 7]
+      call InvokeFromLine(num, 'a')
+      Expect SelectedRange() ==# [1, 8]
+    endfor
+  end
+
+  it 'selects nested if/else block'
+    for num in [3,4,5,6]
+      call InvokeFromLine(num, 'i')
+      Expect SelectedRange() ==# [4, 6]
+      call InvokeFromLine(num, 'a')
+      Expect SelectedRange() ==# [3, 7]
+    endfor
   end
 
 end
