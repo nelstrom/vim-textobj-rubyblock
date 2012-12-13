@@ -248,3 +248,21 @@ describe 'rubyblocks with a method call'
   end
 
 end
+
+describe 'oneline conditionals'
+
+  before
+    silent tabnew test/samples/oneline-conditionals.rb
+  end
+
+  after
+    silent tabclose
+  end
+
+  it 'is not confused by trailing if/unless statements'
+    TODO
+    Expect SelectInsideFrom(2, '^') ==# [2, 2, 5]
+    Expect SelectAroundFrom(1, '^') ==# [1, 1, 6]
+  end
+
+end
