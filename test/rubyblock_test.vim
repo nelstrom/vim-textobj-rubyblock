@@ -182,6 +182,24 @@ describe 'nested blocks: (module > class > def > do)'
     " Expect SelectInsideFrom(7, '^') ==# [7, 3, 7]
   end
 
+  it 'selects around the `[].each do` block'
+    Expect SelectAroundFrom(4, 'fd') ==# [4, 4, 6]
+    Expect SelectAroundFrom(4, '$')  ==# [4, 4, 6]
+    Expect SelectAroundFrom(5, '0')  ==# [5, 4, 6]
+    Expect SelectAroundFrom(6, '0')  ==# [6, 4, 6]
+    " FIXME: it feels as though this should work (but it doesn't):
+    " Expect SelectAroundFrom(4, '^') ==# [4, 4, 6]
+  end
+
+  it 'selects inside the `[].each do` block'
+    Expect SelectInsideFrom(4, 'fd') ==# [4, 5, 5]
+    Expect SelectInsideFrom(4, '$')  ==# [4, 5, 5]
+    Expect SelectInsideFrom(5, '$')  ==# [5, 5, 5]
+    Expect SelectInsideFrom(6, '0')  ==# [6, 5, 5]
+    " FIXME: it feels as though this should work (but it doesn't):
+    " Expect SelectInsideFrom(4, '^')  ==# [4, 5, 5]
+  end
+
   it 'repeating `ar` expands the selection'
     normal 5G
     execute "normal v\<Plug>(textobj-rubyblock-i)\<Esc>"
