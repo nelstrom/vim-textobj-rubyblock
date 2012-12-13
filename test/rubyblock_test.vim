@@ -114,6 +114,8 @@ describe 'if/else blocks'
     for number in [1,2,7,8]
       Expect SelectAroundFrom(number, '^') ==# [number, 1, 8]
     endfor
+    " this behaviour (already tested in loop) is unintuitive!
+    Expect SelectAroundFrom(7, '^') ==# [7, 1, 8]
   end
 
   it 'selects nested if/else block'
@@ -123,6 +125,7 @@ describe 'if/else blocks'
     for number in [3,4,5,6]
       Expect SelectAroundFrom(number, '^') ==# [number, 3, 7]
     endfor
+    Expect SelectAroundFrom(7, '0') ==# [7, 3, 7]
   end
 
 end
