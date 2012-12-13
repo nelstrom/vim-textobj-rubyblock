@@ -132,7 +132,7 @@ describe 'if/else blocks'
 
 end
 
-describe 'nested blocks: module > class > def > do'
+describe 'nested blocks: (module > class > def > do)'
   before
     silent tabnew test/samples/nested-blocks.rb
   end
@@ -146,7 +146,7 @@ describe 'nested blocks: module > class > def > do'
     Expect SelectAroundFrom(1, '$') ==# [1, 1, 9]
     Expect SelectAroundFrom(9, '^') ==# [9, 1, 9]
     Expect SelectAroundFrom(9, '$') ==# [9, 1, 9]
-    " these cases may not be intuitive
+    " FIXME: these cases may not be intuitive
     Expect SelectAroundFrom(2, '0') ==# [2, 1, 9]
     Expect SelectAroundFrom(8, '^') ==# [8, 1, 9]
   end
@@ -160,6 +160,26 @@ describe 'nested blocks: module > class > def > do'
     " inconsistent?
     Expect SelectInsideFrom(8, '$') ==# [8, 2, 8]
     Expect SelectInsideFrom(8, '^') ==# [8, 3, 7]
+  end
+
+  it 'selects around the class'
+    Expect SelectAroundFrom(2, '^') ==# [2, 2, 8]
+    Expect SelectAroundFrom(3, '0') ==# [3, 2, 8]
+    Expect SelectAroundFrom(8, '0') ==# [8, 2, 8]
+    " FIXME: it feels as though this should work (but it doesn't):
+    " Expect SelectAroundFrom(8, '^') ==# [8, 2, 8]
+  end
+
+  it 'selects inside the class'
+    Expect SelectInsideFrom(2, '^') ==# [2, 3, 7]
+    Expect SelectInsideFrom(3, '0') ==# [3, 3, 7]
+    Expect SelectInsideFrom(7, '$') ==# [7, 3, 7]
+    " FIXME: it feels as though this should work (but it doesn't):
+    " Expect SelectInsideFrom(7, '^') ==# [7, 3, 7]
+  end
+
+  it 'repeating `ar` expands the selection'
+    normal 5G
   end
 
 end
