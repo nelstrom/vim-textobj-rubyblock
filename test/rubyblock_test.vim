@@ -110,6 +110,8 @@ describe 'if/else blocks'
   it 'ignores nested if/else block'
     for number in [1,2,8]
       Expect SelectInsideFrom(number, '^') ==# [number, 2, 7]
+      Expect SelectInsideFrom(number, '0') ==# [number, 2, 7]
+      Expect SelectAroundFrom(number, '0') ==# [number, 1, 8]
     endfor
     for number in [1,2,7,8]
       Expect SelectAroundFrom(number, '^') ==# [number, 1, 8]
