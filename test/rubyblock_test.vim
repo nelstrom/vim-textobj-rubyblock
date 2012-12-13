@@ -56,6 +56,7 @@ describe 'default'
 end
 
 describe '<Plug>(textobj-rubyblock-i)'
+
   before
     silent tabnew test/samples/class.rb
   end
@@ -71,6 +72,7 @@ describe '<Plug>(textobj-rubyblock-i)'
 end
 
 describe '<Plug>(textobj-rubyblock-a)'
+
   before
     silent tabnew test/samples/class.rb
   end
@@ -86,6 +88,7 @@ describe '<Plug>(textobj-rubyblock-a)'
 end
 
 describe '<Plug>(textobj-rubyblock-i)'
+
   before
     silent tabnew test/samples/commented-end.rb
   end
@@ -103,6 +106,7 @@ describe '<Plug>(textobj-rubyblock-i)'
 end
 
 describe 'if/else blocks'
+
   before
     silent tabnew test/samples/if-else.rb
   end
@@ -137,6 +141,7 @@ describe 'if/else blocks'
 end
 
 describe 'nested blocks: (module > class > def > do)'
+
   before
     silent tabnew test/samples/nested-blocks.rb
   end
@@ -230,3 +235,16 @@ describe 'nested blocks: (module > class > def > do)'
 
 end
 
+describe 'rubyblocks with a method call'
+
+  after
+    silent tabclose
+  end
+
+  it 'handles `end.max` style method invocations'
+    silent tabnew test/samples/map-dot-max.rb
+    Expect SelectInsideFrom(2, '^') ==# [2, 2, 2]
+    Expect SelectAroundFrom(2, '^') ==# [2, 1, 3]
+  end
+
+end
