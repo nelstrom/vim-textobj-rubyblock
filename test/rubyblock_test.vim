@@ -4,13 +4,16 @@ runtime! macros/matchit.vim
 runtime! plugin/textobj/*.vim
 set visualbell
 
-function! InvokeFromLine(line, type)
-  execute "normal ".a:line."G"
-  execute "normal v\<Plug>(textobj-rubyblock-".a:type.")\<Esc>"
+function! SelectInsideFrom(number, position)
+  execute "normal ".a:number."G".a:position
+  execute "normal v\<Plug>(textobj-rubyblock-i)\<Esc>"
+  return [a:number, line("'<"), line("'>")]
 endfunction
 
-function! SelectedRange()
-  return [line("'<"), line("'>")]
+function! SelectAroundFrom(number, position)
+  execute "normal ".a:number."G".a:position
+  execute "normal v\<Plug>(textobj-rubyblock-a)\<Esc>"
+  return [a:number, line("'<"), line("'>")]
 endfunction
 
 describe 'rubyblock'
@@ -58,8 +61,7 @@ describe '<Plug>(textobj-rubyblock-i)'
   end
 
   it 'selects inside of a class'
-    execute "normal v\<Plug>(textobj-rubyblock-i)\<Esc>"
-    Expect SelectedRange() ==# [2, 2]
+    Expect SelectInsideFrom(1, '^') ==# [1, 2, 2]
   end
 
 end
@@ -74,8 +76,7 @@ describe '<Plug>(textobj-rubyblock-a)'
   end
 
   it 'selects all of a class'
-    execute "normal v\<Plug>(textobj-rubyblock-a)\<Esc>"
-    Expect SelectedRange() ==# [1, 3]
+    Expect SelectAroundFrom(1, '^') ==# [1, 1, 3]
   end
 
 end
@@ -92,7 +93,7 @@ describe '<Plug>(textobj-rubyblock-i)'
   it 'ignores "end" keyword inside of a comment'
     execute "normal v\<Plug>(textobj-rubyblock-i)\<Esc>"
     TODO
-    Expect SelectedRange() ==# [2, 2]
+    Expect SelectInsideFrom(1, '^') ==# [1, 2, 2]
   end
 
 end
@@ -107,24 +108,20 @@ describe 'if/else blocks'
   end
 
   it 'ignores nested if/else block'
-    for num in [1,2,8]
-      call InvokeFromLine(num, 'i')
-      Expect SelectedRange() ==# [2, 7]
+    for number in [1,2,8]
+      Expect SelectInsideFrom(number, '^') ==# [number, 2, 7]
     endfor
-    for num in [1,2,7,8]
-      call InvokeFromLine(num, 'a')
-      Expect SelectedRange() ==# [1, 8]
+    for number in [1,2,7,8]
+      Expect SelectAroundFrom(number, '^') ==# [number, 1, 8]
     endfor
   end
 
   it 'selects nested if/else block'
-    for num in [3,4,5,6,7]
-      call InvokeFromLine(num, 'i')
-      Expect SelectedRange() ==# [4, 6]
+    for number in [3,4,5,6,7]
+      Expect SelectInsideFrom(number, '^') ==# [number, 4, 6]
     endfor
-    for num in [3,4,5,6]
-      call InvokeFromLine(num, 'a')
-      Expect SelectedRange() ==# [3, 7]
+    for number in [3,4,5,6]
+      Expect SelectAroundFrom(number, '^') ==# [number, 3, 7]
     endfor
   end
 
