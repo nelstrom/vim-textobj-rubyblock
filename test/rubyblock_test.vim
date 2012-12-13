@@ -16,6 +16,10 @@ function! SelectAroundFrom(number, position)
   return [a:number, line("'<"), line("'>")]
 endfunction
 
+function! SelectedRange()
+  return [line("'<"), line("'>")]
+endfunction
+
 describe 'rubyblock'
 
   it 'should set a global variable'
@@ -180,6 +184,30 @@ describe 'nested blocks: (module > class > def > do)'
 
   it 'repeating `ar` expands the selection'
     normal 5G
+    execute "normal v\<Plug>(textobj-rubyblock-i)\<Esc>"
+    Expect SelectedRange() ==# [5,5]
+    execute "normal v\<Plug>(textobj-rubyblock-a)\<Esc>"
+    Expect SelectedRange() ==# [4,6]
+    execute "normal v\<Plug>(textobj-rubyblock-a)\<Esc>"
+    Expect SelectedRange() ==# [3,7]
+    execute "normal v\<Plug>(textobj-rubyblock-a)\<Esc>"
+    Expect SelectedRange() ==# [2,8]
+    execute "normal v\<Plug>(textobj-rubyblock-a)\<Esc>"
+    Expect SelectedRange() ==# [1,9]
+  end
+
+  it 'repeating `ir` contracts the selection'
+    normal gg
+    execute "normal v\<Plug>(textobj-rubyblock-a)\<Esc>"
+    Expect SelectedRange() ==# [1,9]
+    execute "normal v\<Plug>(textobj-rubyblock-i)\<Esc>"
+    Expect SelectedRange() ==# [2,8]
+    execute "normal v\<Plug>(textobj-rubyblock-i)\<Esc>"
+    Expect SelectedRange() ==# [3,7]
+    execute "normal v\<Plug>(textobj-rubyblock-i)\<Esc>"
+    Expect SelectedRange() ==# [4,6]
+    execute "normal v\<Plug>(textobj-rubyblock-i)\<Esc>"
+    Expect SelectedRange() ==# [5,5]
   end
 
 end
