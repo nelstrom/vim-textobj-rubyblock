@@ -132,3 +132,35 @@ describe 'if/else blocks'
 
 end
 
+describe 'nested blocks: module > class > def > do'
+  before
+    silent tabnew test/samples/nested-blocks.rb
+  end
+
+  after
+    silent tabclose
+  end
+
+  it 'selects around the module'
+    Expect SelectAroundFrom(1, '^') ==# [1, 1, 9]
+    Expect SelectAroundFrom(1, '$') ==# [1, 1, 9]
+    Expect SelectAroundFrom(9, '^') ==# [9, 1, 9]
+    Expect SelectAroundFrom(9, '$') ==# [9, 1, 9]
+    " these cases may not be intuitive
+    Expect SelectAroundFrom(2, '0') ==# [2, 1, 9]
+    Expect SelectAroundFrom(8, '^') ==# [8, 1, 9]
+  end
+
+  it 'selects inside the module'
+    Expect SelectInsideFrom(1, '^') ==# [1, 2, 8]
+    Expect SelectInsideFrom(1, '$') ==# [1, 2, 8]
+    Expect SelectInsideFrom(9, '^') ==# [9, 2, 8]
+    Expect SelectInsideFrom(9, '$') ==# [9, 2, 8]
+    Expect SelectInsideFrom(2, '0') ==# [2, 2, 8]
+    " inconsistent?
+    Expect SelectInsideFrom(8, '$') ==# [8, 2, 8]
+    Expect SelectInsideFrom(8, '^') ==# [8, 3, 7]
+  end
+
+end
+
