@@ -88,7 +88,7 @@ Running the specs
 
 To run the specs, you call vspec as follows:
 
-    vspec {input-script} [{non-standard-runtimepath} ...]
+    vspec [{non-standard-runtimepath} ...] {input-script}
 
 In this case, the non-standard runtimepath must include the vspec plugin, the textobj-user plugin (which is a dependency for this plugin) and this plugin.
 
@@ -97,14 +97,14 @@ Assuming you use [pathogen][] to manage your plugins, then the plugins required 
     ~/dotfiles
               /vim
                   /bundle
-                         /textobj-user
-                         /textobj-rubyblock
-                         /vspec
+                         /vim-textobj-user
+                         /vim-textobj-rubyblock
+                         /vim-vspec
 
 So to run the `basic.input` tests, you would run:
 
-    cd ~/dotfiles/vim/bundle/textobj-rubyblock
-    ../vspec/bin/vspec test/basic.input ../vspec/ ../textobj-user/ .
+    cd ~/dotfiles/vim/bundle/vim-textobj-rubyblock
+    ../vim-vspec/bin/vspec ../vim-vspec/ ../vim-textobj-user/ . test/rubyblock_test.vim
 
 Generating a vimball
 --------------------
