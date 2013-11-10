@@ -1,3 +1,7 @@
+if exists(':NeoBundleDepends')
+  NeoBundleDepends 'kana/vim-textobj-user'
+endif
+
 if exists('g:loaded_textobj_rubyblock')  "{{{1
   finish
 endif
