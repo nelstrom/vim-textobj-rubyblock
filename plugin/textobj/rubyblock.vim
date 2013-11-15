@@ -2,6 +2,10 @@ if exists('g:loaded_textobj_rubyblock')  "{{{1
   finish
 endif
 
+if exists(':NeoBundleDepends')
+  NeoBundleDepends 'kana/vim-textobj-user'
+endif
+
 " Interface  "{{{1
 call textobj#user#plugin('rubyblock', {
 \      '-': {
