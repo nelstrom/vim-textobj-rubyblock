@@ -1,4 +1,3 @@
-" nnoremap <leader>r :wa <bar> ! ../vspec/bin/vspec ../vspec/ ../textobj-user . test/rubyblock_test.vim<CR>
 silent filetype indent plugin on
 runtime! macros/matchit.vim
 runtime! plugin/textobj/*.vim
@@ -58,7 +57,7 @@ end
 describe '<Plug>(textobj-rubyblock-i)'
 
   before
-    silent tabnew test/samples/class.rb
+    silent tabnew t/samples/class.rb
   end
 
   after
@@ -74,7 +73,7 @@ end
 describe '<Plug>(textobj-rubyblock-a)'
 
   before
-    silent tabnew test/samples/class.rb
+    silent tabnew t/samples/class.rb
   end
 
   after
@@ -90,7 +89,7 @@ end
 describe '<Plug>(textobj-rubyblock-i)'
 
   before
-    silent tabnew test/samples/commented-end.rb
+    silent tabnew t/samples/commented-end.rb
   end
 
   after
@@ -108,7 +107,7 @@ end
 describe 'if/else blocks'
 
   before
-    silent tabnew test/samples/if-else.rb
+    silent tabnew t/samples/if-else.rb
   end
 
   after
@@ -143,7 +142,7 @@ end
 describe 'nested blocks: (module > class > def > do)'
 
   before
-    silent tabnew test/samples/nested-blocks.rb
+    silent tabnew t/samples/nested-blocks.rb
   end
 
   after
@@ -242,7 +241,7 @@ describe 'rubyblocks with a method call'
   end
 
   it 'handles `end.max` style method invocations'
-    silent tabnew test/samples/map-dot-max.rb
+    silent tabnew t/samples/map-dot-max.rb
     Expect SelectInsideFrom(2, '^') ==# [2, 2, 2]
     Expect SelectAroundFrom(2, '^') ==# [2, 1, 3]
   end
@@ -252,7 +251,7 @@ end
 describe 'oneline conditionals'
 
   before
-    silent tabnew test/samples/oneline-conditionals.rb
+    silent tabnew t/samples/oneline-conditionals.rb
   end
 
   after
