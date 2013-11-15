@@ -81,8 +81,6 @@ selection inwards by repeating `ir`.
 Development
 ===========
 
-Specs are currently broken. :-/
-
 Running the specs
 -----------------
 
