@@ -11,6 +11,10 @@ call textobj#user#plugin('rubyblock', {
 \      }
 \    })
 
+if !exists('g:textobj_rubyblock_inclusive')
+  let g:textobj_rubyblock_inclusive = 0
+endif
+
 " Misc.  "{{{1
 let s:comment_escape = '\v^[^#]*'
 let s:block_openers = '\zs(<def>|<if>|<do>|<module>|<class>)'
@@ -26,6 +30,11 @@ function! s:select_a()
 
   " Jump to match
   normal %
+  if g:textobj_rubyblock_inclusive && 
+        \ line('.') > 1 && 
+        \ getline(line('.') - 1) =~ '^\s*$'
+    normal! k
+  endif
   let start_pos = getpos('.')
 
   return ['V', start_pos, end_pos]
