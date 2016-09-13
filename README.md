@@ -114,6 +114,11 @@ Credits
 
 This plugin was built by [Drew Neil][me], but the real credit goes to [Kana][], whose [textobj-user][kana-git] plugin provides a framework for building custom text objects. I couldn't have created the rubyblock plugin without building on top of his hard work, so I'd like to say a big thanks to Kana.
 
+License
+=======
+
+Copyright (c) Drew Neil. Distributed under the same terms as Vim itself. See `:help license`.
+
 [Kana]: http://whileimautomaton.net/
 [textobj-user]: http://www.vim.org/scripts/script.php?script_id=2100
 [kana-git]: https://github.com/kana/vim-textobj-user
