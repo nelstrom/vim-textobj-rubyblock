@@ -65,3 +65,19 @@ def hello
   bar
 end
 
+def method_with_while
+  var1 = 1
+  i = 0
+  while i < 10
+    i += 1
+  end
+  var2 = 2
+end
+
+def method_with_unless
+  var1 = 1
+  unless condition
+    puts 'foo'
+  end
+  var2 = 2
+end
