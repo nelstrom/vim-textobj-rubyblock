@@ -86,6 +86,23 @@ describe '<Plug>(textobj-rubyblock-a)'
 
 end
 
+describe 'nested while and unless blocks'
+
+  before
+    silent tabnew t/examples.rb
+  end
+
+  after
+    silent tabclose
+  end
+
+  it 'ignores nested while and unless blocks'
+    Expect SelectAroundFrom(69, '^') ==# [69, 68, 75]
+    Expect SelectAroundFrom(78, '^') ==# [78, 77, 83]
+  end
+
+end
+
 describe '<Plug>(textobj-rubyblock-i)'
 
   before
