@@ -103,6 +103,30 @@ describe 'nested while and unless blocks'
 
 end
 
+describe 'g:textobj_rubyblock_mids'
+  before
+    silent tabnew t/examples.rb
+  end
+
+  after
+    silent tabclose
+  end
+
+  context '1'
+    it 'selects only between mids'
+      let g:textobj_rubyblock_mids = 1
+      Expect SelectInsideFrom(87, '^') ==# [87, 87, 88]
+    end
+  end
+
+  context '0'
+    it 'ignores mids'
+      let g:textobj_rubyblock_mids = 0
+      Expect SelectInsideFrom(87, '^') ==# [87, 87, 90]
+    end
+  end
+end
+
 describe '<Plug>(textobj-rubyblock-i)'
 
   before

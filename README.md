@@ -63,6 +63,11 @@ Note too that the `ar` and `ir` text objects always position your cursor on
 the `end` keyword. If you want to move to the top of the selection, you can do
 so with the `o` key.
 
+By default `ir` ignores middle keywords like `else` and `when`, but if you
+prefer you can have `ir` acknowledge them by putting this in your .vimrc
+
+    g:textobj_rubyblock_mids = 1
+
 Limitations
 -----------
 

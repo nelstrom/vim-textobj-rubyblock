@@ -81,3 +81,12 @@ def method_with_unless
   end
   var2 = 2
 end
+
+def method_with_if_else
+  if condition
+    foo = 'foo'
+    bar = 'bar'
+  else
+    baz = 'baz'
+  end
+end
